@@ -1,19 +1,36 @@
 package ch.hearc.beer.model;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Beer {
 	//attributes
 	private String name;
-	private int alcoholPourcentage;
-	private double price;
+	private float alcoholPourcentage;
+	private int price;
 	private int id;
 	
+	private static String[] beerNames = {"Müller Bräu", "Orforte", "Père Porret", "Rosengarten", "Rugenbräu", 
+			"Schützengarten", "Sierrevoise", "Spok", "Tell", "Trois Dames", "Ueli Bier",
+			"Unser Bier", "Valaisanne", "Wädi-Brau", "Warteck", "Weizentrumpf"};
+	
 	//constructor
-	public Beer(String name, int alcoholPourcentage, double price, int id) {
+	public Beer(String name, float alcoholPourcentage, int price, int id) {
 		super();
 		this.name = name;
 		this.alcoholPourcentage = alcoholPourcentage;
 		this.price = price;
 		this.id = id;
+	}
+	
+	public static Beer createBeer(int id) {
+		return new Beer(randomBeerName(), 
+						ThreadLocalRandom.current().nextFloat() * 100f, 
+						ThreadLocalRandom.current().nextInt(100),
+						id);
+	}
+	
+	public static String randomBeerName() {
+		return beerNames[ThreadLocalRandom.current().nextInt(beerNames.length)];
 	}
 	
 	// getters/setters
@@ -24,17 +41,17 @@ public class Beer {
 		this.name = name;
 	}
 	
-	public int getAlcoholPourcentage() {
+	public float getAlcoholPourcentage() {
 		return alcoholPourcentage;
 	}
-	public void setAlcoholPourcentage(int alcoholPourcentage) {
+	public void setAlcoholPourcentage(float alcoholPourcentage) {
 		this.alcoholPourcentage = alcoholPourcentage;
 	}
 	
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	
