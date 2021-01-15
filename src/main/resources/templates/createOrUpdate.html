@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "UTF-8" />
+      <link href = "/css/style.css" rel = "stylesheet"/>
+      <title th:text="${beer.id} >= 0 ? 'Update beer' : 'Create beer'"></title>
+   </head>
+   <body>
+      <div class="navbar">
+      	<h3 class="nav-item">The awesome beer project (1990 web style)</h3>
+      </div>
+      
+      <form th:action="@{/beer}" th:object="${beer}" th:method="${beer.id >=0 ? 'put' : 'post'}">
+	  	<div class="container container mt-50">
+	  		<h3 th:text="${beer.id} >= 0 ? 'Update your beer' : 'Create your beer'"></h3>
+	  	
+	  		<div class="center-item">
+			      <div class="center-container">
+			      
+			    	<div class="beer-container">
+			    		<!--  allow conversion to Beer modelattribute -->
+			    		<input type="hidden" name="id" th:field="${beer.id}"/>
+				      	<input type="text" name="name" th:field="${beer.name}"/>
+				      	<div class="line-center pad-verti">
+			      			<span>
+			      				<span>Alcohol </span>
+			      				<input class="inline" name="alcoholPourcentage" type="number" step="0.01" th:field="${beer.alcoholPourcentage} ">
+			      				<span>%</span>
+		      				</span>
+			        		<span>
+			        			<span>Price </span>
+			        			<input class="inline" name="price" type="number" th:field="${beer.price}"></span>
+			        			<span>.-</span>
+			        		</span>
+				      	</div>
+			      	</div>
+			    <div class="line-middle m-top">
+		       	    <input type="submit" class="success" value="Submit" text="Validate"/>
+		       	    
+		      		<a href="/beer/"><input type="button" value="Cancel" /></a>
+	       		</div>
+		      	</div>
+	       	</div>
+	      </div>
+      </form>
+   </body>
+</html>

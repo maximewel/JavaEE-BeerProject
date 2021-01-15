@@ -1,11 +1,12 @@
 package ch.hearc.beer.model;
 
+import java.text.DecimalFormat;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Beer {
 	//attributes
 	private String name;
-	private float alcoholPourcentage;
+	private Double alcoholPourcentage;
 	private int price;
 	private int id;
 	
@@ -14,16 +15,16 @@ public class Beer {
 			"Unser Bier", "Valaisanne", "Wädi-Brau", "Warteck", "Weizentrumpf"};
 	
 	//constructor
-	public Beer(String name, float alcoholPourcentage, int price, int id) {
+	public Beer(String name, double alcoholPourcentage, int price, int id) {
 		super();
 		this.name = name;
-		this.alcoholPourcentage = alcoholPourcentage;
+		this.alcoholPourcentage =  Math.floor(alcoholPourcentage * 100) / 100;
 		this.price = price;
 		this.id = id;
-	}
+	} 	
 	
 	public static Beer createBeer(int id) {
-		return new Beer(randomBeerName(), 
+		return new Beer(randomBeerName(),
 						ThreadLocalRandom.current().nextFloat() * 100f, 
 						ThreadLocalRandom.current().nextInt(100),
 						id);
@@ -41,10 +42,10 @@ public class Beer {
 		this.name = name;
 	}
 	
-	public float getAlcoholPourcentage() {
+	public double getAlcoholPourcentage() {
 		return alcoholPourcentage;
 	}
-	public void setAlcoholPourcentage(float alcoholPourcentage) {
+	public void setAlcoholPourcentage(double alcoholPourcentage) {
 		this.alcoholPourcentage = alcoholPourcentage;
 	}
 	

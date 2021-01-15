@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "UTF-8" />
+      <link href = "/css/style.css" rel = "stylesheet"/>
+      <title>Beers</title>
+   </head>
+   <body>
+      <div class="navbar">
+      	<h3 class="nav-item">The awesome beer project (1990 web style)</h3>
+      </div>
+      
+      <div class="container mt-50 relative">
+		<div th:if="${success != null}" th:text="${success}" class="fade success message"></div>
+		<div th:if="${error != null}" th:text="${error}" class="fade error message"></div>
+      	<h1 class="pad-verti">Available beers</h1>
+      	<div class="beers-flex">
+      		<div th:each="beer : ${beers}" >
+      			<a th:href="@{|/beer/${beer.id}|}" >
+		      		<div class="beer-container beer-select">
+				      	<h3 th:text="${beer.name}"></h3>
+				      	<div class="line-center pad-verti">
+				      		<span>
+				      			<span>Alcohol </span><span th:text="${#numbers.formatDecimal(beer.alcoholPourcentage, 0, 'COMMA', 2, 'POINT')} ">POURCENT</span><span>%</span>
+			      			</span>
+			      			<span>
+				        		<span>Price </span><span th:text="${beer.price}">PRICE</span><span>.-</span>
+				        	</span>
+				      	</div>
+				      	<form th:action="@{|/beer/${beer.id}|}" th:method="delete">
+					        <div class="line-right pad-verti">
+					        	<button class="danger">Delete</button>
+					        </div>
+					    </form>
+		        	</div>
+		        </a>
+        	</div>
+	      </div>
+      </div>
+	  <!-- floating "add" button -->      
+      <a href="/beer/create"><button class="floating-bottom">Add</button></a>
+   </body>
+</html>
