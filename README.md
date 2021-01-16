@@ -58,8 +58,11 @@ Remarques :
 * Les vues "create" et "update" sont regroupées - le traitement des fonction qui servet la vue se chargent :
 	* de créer une bière temporaire dans le create, pour la donner à la vue createOrUpdate
 	* de récupérer la bière en DB dans le update, pour la donner à la vue createOrUpdate
-	Ceci permet de factoriser la vue de création/update d'une bière qui sont très similaires pour notre app
+
+Ceci permet de factoriser la vue de création/update d'une bière qui sont très similaires pour notre app
+
 # Divers
 * Le projet est doté d'un système de gestion des erreurs via la session - les erreurs sont mises en session depuis les fonctions non idempotentes (formulaires traités) et récupérées depuis la vue index
 * Les routes non idempotentes - post, put, delete - sont redirigées vers l'indexe
-* Il faudra serieusement penser à importer bootstrap sur le vrai projet, parce que là c'est sacrèment moche.
+* Il faudra serieusement penser à importer bootstrap sur le vrai projet, parce que là c'est sacrèment moche (Mais presque poétiquement moche, non ? Une réflexion sur le web de 1990 etc...)
+* Je n'aime pas les bières, j'aurais peut-être du faire un gestionnaire de jus d'orange
