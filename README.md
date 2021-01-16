@@ -55,7 +55,10 @@ Remarques :
 * On reconnait les verbes get, delete, put, post sur l'endpoit restfull /beer et /beer/{id} si nécéssaire.\
 * Le point /beer/{id} pourrait être réservé par la vue détail (non présente ici), alors on devrait placer la view d'update sur une autre route non rest
 * Deux routes GET supplémentaires permettent de servir les  vues : /beer/create, /beer/{id} qui pourrait être /beer/{id}/update si on voulait laisser /beer/{id} pour les détails
-
+* Les vues "create" et "update" sont regroupées - le traitement des fonction qui servet la vue se chargent :
+	* de créer une bière temporaire dans le create, pour la donner à la vue createOrUpdate
+	* de récupérer la bière en DB dans le update, pour la donner à la vue createOrUpdate
+	Ceci permet de factoriser la vue de création/update d'une bière qui sont très similaires pour notre app
 # Divers
 * Le projet est doté d'un système de gestion des erreurs via la session - les erreurs sont mises en session depuis les fonctions non idempotentes (formulaires traités) et récupérées depuis la vue index
 * Les routes non idempotentes - post, put, delete - sont redirigées vers l'indexe
