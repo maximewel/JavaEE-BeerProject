@@ -1,6 +1,5 @@
 package ch.hearc.beer.model;
 
-import java.text.DecimalFormat;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Beer {

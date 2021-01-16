@@ -1,10 +1,5 @@
 package ch.hearc.beer.controller;
 
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
